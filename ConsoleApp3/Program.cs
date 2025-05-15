@@ -30,7 +30,11 @@ namespace MyApp
                     }
                 }
             }
-           
+            else
+            {
+                series = ReplaceSeries();
+
+            }
 
             ShowMenu(series);
             
@@ -38,6 +42,8 @@ namespace MyApp
 
 
 
+
+       
         static void ShowMenu( List<int> series)
         {
 
@@ -63,7 +69,8 @@ namespace MyApp
                 switch (user)
                 {
                     case 1:
-                       series = ReplaceSeries();
+                        series.Clear();
+                        series.AddRange(ReplaceSeries());
                         break;
 
                     case 2:
@@ -180,29 +187,29 @@ namespace MyApp
             
         }
 
-        static int maxNum(List<int> series)
+        static void maxNum(List<int> series)
         {
-            return series.Max();
+            Console.WriteLine($"the max num is:{series.Max()}");
         }
 
 
-        static int minNum(List<int> series)
+        static void minNum(List<int> series)
         {
-            return series.Min();
+            Console.WriteLine($"the num min is {series.Min()}");
 
         }
 
-        static int average(List<int> series)
+        static void average(List<int> series)
         {
-         int count = series.Count;
-            int sum = 0; 
+         float count = series.Count;
+            float sum = 0; 
             
             foreach (int num in series)
             {
              sum += num;
             }
-            int avg = sum / count;
-            return avg;
+            float avg =  sum / count;
+            Console.WriteLine($"averag is {avg:F2}");
         
         }
 
